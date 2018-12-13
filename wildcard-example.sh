@@ -16,4 +16,4 @@ docker run -e PROVIDER=route53 \
        -e CERTBOT_DELEGATED="z.example.com" \
        -e CERTBOT_ALIAS="staging_star_z.example.com" \
        -v /var/lib/letsencrypt-dns-staging:/certs \
-       salemove/letsencrypt-dns
+       nopdotcom/letsencrypt-dns
