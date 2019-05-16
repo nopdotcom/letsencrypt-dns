@@ -10,6 +10,7 @@ Autonomous docker container responsible for issuing and renewing Letsencrypt cer
 if PROVIDER is set to `route53`
 * `LEXICON_ROUTE53_ACCESS_SECRET=<AWS IAM user Secret Key>` - required
 if PROVIDER is set to `route53`
+* `SLEEP_TIME` - optional (defaults to `1d`) sleep time between renewals.  The special value `0` means 'run once, then exit'.
 * `CERTBOT_DOMAIN` - the domain to get the certificate for.
 * `CERTBOT_STAGING` - if set to anything but `False`, requests a fake certificate,
 not subject to rate limits.
