@@ -13,19 +13,34 @@ ARG DEFAULT_LEX_SCRIPT=https://raw.githubusercontent.com/nopdotcom/lexicon/letse
 ARG RUN_PKGS="\
 	bash \
 	curl \
-        libffi \
-        openssl \
+	libffi \
+	openssl \
 	python3 \
+	py3-attrs \
+	py3-cffi \
+	py3-chardet \
+	py3-click \
+	py3-cryptography \
+	py3-dateutil \
+	py3-defusedxml \
+	py3-dnspython \
+	py3-docutils \
+	py3-future \
 	py3-lxml \
+	py3-lxml \
+	py3-openssl \
+	py3-prompt_toolkit \
+	py3-pygments \
+	py3-requests \
+	py3-requests-toolbelt \
+	py3-tz \
+	py3-urllib3 \
+	py3-wcwidth \
+	py3-yaml \
 "
 
 ARG DEV_PKGS="\
 	git \
-	gcc \
-	libc-dev \
-	libffi-dev \
-	openssl-dev \
-	python3-dev \
 "
 
 RUN apk add --update $RUN_PKGS $DEV_PKGS
