@@ -8,7 +8,7 @@ ARG LEXICON_VERSION=3.2.5
 ARG DEHYDRATED_REPO=https://github.com/nopdotcom/dehydrated.git
 
 #ARG DEFAULT_LEX_SCRIPT=https://raw.githubusercontent.com/AnalogJ/lexicon/5deaca503010e1cc0dfca10e31f3ffd17e7fc749/examples
-ARG DEFAULT_LEX_SCRIPT=https://raw.githubusercontent.com/nopdotcom/lexicon/letsencrypt-dns/examples
+ARG DEFAULT_LEX_SCRIPT=https://raw.githubusercontent.com/nopdotcom/lexicon/letsencrypt-dns/examples/dehydrated.default.sh
 
 ARG RUN_PKGS="\
 	bash \
@@ -49,9 +49,11 @@ RUN cd / \
  && git clone --branch v0.6.2 --depth 1 $DEHYDRATED_REPO \
  && pip3 install dns-lexicon[full]==${LEXICON_VERSION}
 
-ADD $DEFAULT_LEX_SCRIPT/dehydrated.default.sh /dehydrated/
+WORKDIR /dehydrated/
+RUN wget "${DEFAULT_LEX_SCRIPT}"
 RUN chmod +x /dehydrated/dehydrated.default.sh
 
+WORKDIR /
 ADD dns-certbot.sh /dns-certbot.sh
 RUN chmod +x /dns-certbot.sh
 
