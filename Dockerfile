@@ -49,9 +49,11 @@ RUN cd / \
  && git clone --branch v0.6.2 --depth 1 $DEHYDRATED_REPO \
  && pip3 install dns-lexicon[full]==${LEXICON_VERSION}
 
-ADD ${DEFAULT_LEX_SCRIPT} /dehydrated/
+WORKDIR /dehydrated/
+RUN wget "${DEFAULT_LEX_SCRIPT}"
 RUN chmod +x /dehydrated/dehydrated.default.sh
 
+WORKDIR /
 ADD dns-certbot.sh /dns-certbot.sh
 RUN chmod +x /dns-certbot.sh
 
