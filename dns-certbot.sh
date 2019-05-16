@@ -33,5 +33,8 @@ while :;
 do
   "$DEHYDRATED_EXECUTABLE" --cron --accept-terms --hook "$DEHYDRATED_HOOK" --challenge dns-01 --domain "$CERTBOT_DOMAIN" --out "$OUTPUT_LOCATION" $CERTBOT_ALIAS_ARG
   echo "Sleeping for $SLEEP_TIME until next check."
+  if [[ "$SLEEP_TIME" = "0" ]]; then
+    break
+  fi
   sleep "$SLEEP_TIME"
 done
